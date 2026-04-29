@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Preloader from './components/Preloader';
+import PreLoader from './components/PreLoader';
 
 const queryClient = new QueryClient();
 
@@ -19,7 +19,7 @@ const App = () => (
       <BrowserRouter>
         
         {/* PRELOADER DIPINDAH KE DALAM SINI */}
-        <Preloader />
+        <PreLoader />
 
         <Routes>
           <Route path="/" element={<Index />} />

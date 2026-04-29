@@ -45,7 +45,7 @@ const projects: Project[] = [
     description: "The School Facilities Complaints Application is a web-based information system specifically designed to digitize and simplify the process of reporting damage to school facilities. It allows users to easily report issues and track the status of their complaints.",
     tech: ["PHP", "Bootstrap", "MySQL"],
     isGallery: false, 
-    link: "https://link-projek-anda.com", 
+    link: "https://julian-ricardop3.wuaze.com/", 
   },
   {
     title: "Personal Portfolio",
@@ -53,7 +53,7 @@ const projects: Project[] = [
     description: "Attractive and interactive Personal Portfolio showcasing my skills and expertise. Built with modern web technologies to ensure highly responsive and performant user experiences.",
     tech: ["React", "Tailwind CSS", "Framer Motion"],
     isGallery: false, 
-    link: "https://julianricardo.id",
+    link: "https://julian-ricardo.vercel.app/",
   }
 ];
 

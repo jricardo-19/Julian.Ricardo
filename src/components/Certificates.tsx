@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Award, ExternalLink, X } from "lucide-react";
-import cert1 from "@/assets/cert1.jpg";
-import cert2 from "@/assets/cert2.jpg";
-import cert3 from "@/assets/cert3.jpg";
-import cert4 from "@/assets/cert4.jpg";
-import cert5 from "@/assets/cert5.jpg";
-import cert6 from "@/assets/cert6.jpg";
+import cert1 from "@/assets/cert/cert1.jpg";
+import cert2 from "@/assets/cert/cert2.jpg";
+import cert3 from "@/assets/cert/cert3.jpg";
+import cert4 from "@/assets/cert/cert4.jpg";
+import cert5 from "@/assets/cert/cert5.jpg";
+import cert6 from "@/assets/cert/cert6.jpg";
+import cert7 from "@/assets/cert/cert7.jpg";
 
 const Certificates = () => {
   // --- STATE UNTUK POPUP ---
@@ -18,6 +19,7 @@ const Certificates = () => {
     { id: 4, title: "Belajar Dasar Google Cloud", issuer: "Dicoding", date: "2023", image: cert4 },
     { id: 5, title: "Memulai Dasar Pemrograman Untuk Menjadi Pemngembang Software", issuer: "Dicoding", date: "2024", image: cert5 },
     { id: 6, title: "Milo Active Indonesia Race", issuer: "Nestlé Indonesia", date: "2025", image: cert6 },
+    { id: 7, title: "Solusi Praktis Membangun Sistem Keamanan Dari Nol", issuer: "ID-Networkers", date: "2026", image: cert7 }
   ];
 
   const certificates = [...certificatesSource, ...certificatesSource];

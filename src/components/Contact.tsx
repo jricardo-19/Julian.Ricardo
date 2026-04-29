@@ -46,9 +46,9 @@ const Contact = () => {
     {
       icon: Phone,
       label: "WhatsApp",
-      value: "+62 812-3456-7890",
+      value: "+62 895-4102-06340",
       // Pastikan format wa.me menggunakan kode negara (62) tanpa '+' atau spasi
-      link: "https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20bekerja%20sama.",
+      link: "https://wa.me/62895410206340?text=Halo,%20saya%20tertarik%20bekerja%20sama.",
     },
   ];
 

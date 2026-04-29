@@ -60,10 +60,7 @@ const Hero = () => {
         
         <div className="space-y-6 max-w-4xl animate-fade-in-up">
           
-          {/* Badge Sapaan */}
-          <div className="inline-block px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-blue-400 text-sm font-medium mb-2">
-            👋 Welcome to my portfolio
-          </div>
+         
 
           {/* JUDUL UTAMA */}
           <h1 className="flex flex-wrap justify-center items-center gap-2 md:gap-3 text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-tight">

@@ -18,8 +18,19 @@ import dashboard from "@/assets/pdam_projek/dashboard.jpg";
 import dashboard_monitor from "@/assets/pdam_projek/dashboard_monitor.jpg"; 
 import history from "@/assets/pdam_projek/history.jpg";
 
+// --- DEFINISI TIPE TYPESCRIPT (INI YANG MEMPERBAIKI ERROR VERCEL) ---
+type Project = {
+  title: string;
+  category: string;
+  description: string;
+  tech: string[];
+  isGallery: boolean;
+  gallery?: string[]; // Tanda '?' berarti properti ini opsional
+  link?: string;      // Tanda '?' berarti properti ini opsional
+};
+
 // --- DATA PROJECTS ---
-const projects = [
+const projects: Project[] = [
   {
     title: "PDAM Tirta Raharja Tower Monitoring System",
     category: "Internal Tool",
@@ -28,16 +39,14 @@ const projects = [
     isGallery: true, 
     gallery: [login, dashboard, dashboard_monitor, history],
   },
-
   {
     title: "E-Lapor System",
     category: "External or internal Tool for School",
-    description: "The School Facilities Complaints Application is a web-based information system specifically designed to digitize and simplify the process of reporting damage to school facilities and infrastructure. This application serves as an interactive platform between students and school officials regarding facility maintenance.",
-    tech: ["PHP", "MySql"],
+    description: "The School Facilities Complaints Application is a web-based information system specifically designed to digitize and simplify the process of reporting damage to school facilities. It allows users to easily report issues and track the status of their complaints.",
+    tech: ["PHP", "Bootstrap", "MySQL"],
     isGallery: false, 
-    link: "http://julian-ricardop3.wuaze.com/",
+    link: "https://link-projek-anda.com", // Ganti dengan link E-Lapor Anda
   },
-
   {
     title: "Personal Portfolio",
     category: "Landing Page",
@@ -45,7 +54,7 @@ const projects = [
     tech: ["React", "Tailwind CSS", "Framer Motion"],
     isGallery: false, 
     link: "https://julianricardo.id",
-  },
+  }
 ];
 
 const Projects = () => {
@@ -111,7 +120,7 @@ const Projects = () => {
               {/* Layout Flexbox: Memanjang penuh dari kiri ke kanan */}
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-16">
                 
-                {/* Bagian Kiri: Info Projek (Dibuat memakan ruang lebih besar) */}
+                {/* Bagian Kiri: Info Projek */}
                 <div className="flex-1 space-y-5">
                   
                   {/* Judul & Badge */}
@@ -125,7 +134,7 @@ const Projects = () => {
                     </Badge>
                   </div>
 
-                  {/* Deskripsi (Batasan max-w dihapus agar menyebar luas) */}
+                  {/* Deskripsi */}
                   <p className="text-slate-400 leading-relaxed text-base md:text-lg w-full">
                     {project.description}
                   </p>
@@ -165,8 +174,8 @@ const Projects = () => {
         </div>
       </div>
 
-     {/* --- GALLERY MODAL (POPUP) --- */}
-     {activeGallery && (
+      {/* --- GALLERY MODAL (POPUP) --- */}
+      {activeGallery && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-sm p-4 md:p-10 animate-in fade-in duration-300"
           onClick={closeGallery}

@@ -25,11 +25,11 @@ type Project = {
   description: string;
   tech: string[];
   isGallery: boolean;
-  gallery?: string[]; // Tanda '?' berarti properti ini opsional
-  link?: string;      // Tanda '?' berarti properti ini opsional
+  gallery?: string[]; 
+  link?: string;      
 };
 
-// --- DATA PROJECTS ---
+// --- DATA PROJECTS (Perhatikan ada tulisan ': Project[]' di sini) ---
 const projects: Project[] = [
   {
     title: "PDAM Tirta Raharja Tower Monitoring System",
@@ -45,7 +45,7 @@ const projects: Project[] = [
     description: "The School Facilities Complaints Application is a web-based information system specifically designed to digitize and simplify the process of reporting damage to school facilities. It allows users to easily report issues and track the status of their complaints.",
     tech: ["PHP", "Bootstrap", "MySQL"],
     isGallery: false, 
-    link: "https://link-projek-anda.com", // Ganti dengan link E-Lapor Anda
+    link: "https://link-projek-anda.com", 
   },
   {
     title: "Personal Portfolio",
@@ -58,7 +58,6 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
-  // --- STATE UNTUK GALLERY POPUP ---
   const [activeGallery, setActiveGallery] = useState<string[] | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -87,14 +86,9 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-24 bg-slate-950 relative overflow-hidden">
-      
-      {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 blur-[150px] rounded-full -z-10 pointer-events-none" />
 
-      {/* Kontainer diperlebar menjadi max-w-7xl agar memanjang penuh ke samping */}
       <div className="container mx-auto px-4 md:px-8 max-w-7xl"> 
-        
-        {/* --- HEADER --- */}
         <div className="text-left space-y-4 mb-12 animate-fade-in border-b border-slate-800 pb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-500/30 text-blue-400 text-sm mb-2">
             <Layers size={16} />
@@ -110,20 +104,15 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* --- PROJECT LIST (FULL WIDTH MINIMALIST) --- */}
         <div className="flex flex-col gap-6">
           {projects.map((project, index) => (
             <Card 
               key={index}
               className="group bg-slate-900/40 backdrop-blur-sm border-slate-800 p-6 md:p-10 hover:border-blue-500/50 hover:bg-slate-900/80 transition-all duration-300"
             >
-              {/* Layout Flexbox: Memanjang penuh dari kiri ke kanan */}
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-16">
                 
-                {/* Bagian Kiri: Info Projek */}
                 <div className="flex-1 space-y-5">
-                  
-                  {/* Judul & Badge */}
                   <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                     <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
                       {project.title}
@@ -134,12 +123,10 @@ const Projects = () => {
                     </Badge>
                   </div>
 
-                  {/* Deskripsi */}
                   <p className="text-slate-400 leading-relaxed text-base md:text-lg w-full">
                     {project.description}
                   </p>
 
-                  {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 pt-2">
                     {project.tech.map((tech, i) => (
                       <span key={i} className="px-4 py-1.5 text-xs font-mono rounded-full bg-slate-950 text-slate-300 border border-slate-800 group-hover:border-blue-500/30 group-hover:text-blue-300 transition-colors">
@@ -149,14 +136,13 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* Bagian Kanan: Tombol Action */}
                 <div className="shrink-0 lg:pl-10 lg:border-l border-slate-800 w-full lg:w-auto pt-4 lg:pt-0">
                   {project.isGallery ? (
                     <Button 
                       onClick={() => openGallery(project.gallery || [])}
                       className="w-full lg:w-[220px] h-14 bg-slate-800 hover:bg-blue-600 text-white gap-3 transition-all text-base rounded-xl"
                     >
-                      <Eye size={20} /> View Gallery Projects
+                      <Eye size={20} /> View Screenshots
                     </Button>
                   ) : (
                     <Button 
@@ -174,13 +160,11 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* --- GALLERY MODAL (POPUP) --- */}
       {activeGallery && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-sm p-4 md:p-10 animate-in fade-in duration-300"
           onClick={closeGallery}
         >
-          {/* TOMBOL CLOSE (Diperbaiki: Selalu terlihat di pojok kanan atas) */}
           <button 
             onClick={closeGallery}
             className="fixed top-4 right-4 md:top-8 md:right-8 p-2.5 bg-slate-800/80 hover:bg-red-500 text-slate-200 hover:text-white rounded-full backdrop-blur-md transition-all shadow-lg z-[120]"
@@ -193,7 +177,6 @@ const Projects = () => {
             className="relative max-w-6xl w-full flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Tombol Kiri */}
             <button 
               onClick={prevImage}
               className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all z-20"
@@ -201,7 +184,6 @@ const Projects = () => {
               <ChevronLeft size={32} />
             </button>
 
-            {/* Tombol Kanan */}
             <button 
               onClick={nextImage}
               className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all z-20"
@@ -209,7 +191,6 @@ const Projects = () => {
               <ChevronRight size={32} />
             </button>
 
-            {/* Gambar */}
             <div className="w-full aspect-video rounded-xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl">
               <img 
                 src={activeGallery[currentIndex]} 
@@ -218,7 +199,6 @@ const Projects = () => {
               />
             </div>
 
-            {/* Indikator Titik */}
             <div className="mt-6 flex gap-2">
               {activeGallery.map((_, i) => (
                 <div 

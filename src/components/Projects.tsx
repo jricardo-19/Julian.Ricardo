@@ -147,7 +147,7 @@ const Projects = () => {
                       onClick={() => openGallery(project.gallery || [])}
                       className="w-full lg:w-[220px] h-14 bg-slate-800 hover:bg-blue-600 text-white gap-3 transition-all text-base rounded-xl"
                     >
-                      <Eye size={20} /> View Screenshots
+                      <Eye size={20} /> View Gallery Projects
                     </Button>
                   ) : (
                     <Button 
@@ -165,23 +165,26 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* --- GALLERY MODAL (POPUP) --- */}
-      {activeGallery && (
+     {/* --- GALLERY MODAL (POPUP) --- */}
+     {activeGallery && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-sm p-4 md:p-10 animate-in fade-in duration-300"
           onClick={closeGallery}
         >
+          {/* TOMBOL CLOSE (Diperbaiki: Selalu terlihat di pojok kanan atas) */}
+          <button 
+            onClick={closeGallery}
+            className="fixed top-4 right-4 md:top-8 md:right-8 p-2.5 bg-slate-800/80 hover:bg-red-500 text-slate-200 hover:text-white rounded-full backdrop-blur-md transition-all shadow-lg z-[120]"
+            title="Close Gallery"
+          >
+            <X size={28} />
+          </button>
+
           <div 
             className="relative max-w-6xl w-full flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
-              onClick={closeGallery}
-              className="absolute -top-12 right-0 p-2 text-white hover:text-red-500 transition-colors"
-            >
-              <X size={32} />
-            </button>
-
+            {/* Tombol Kiri */}
             <button 
               onClick={prevImage}
               className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all z-20"
@@ -189,6 +192,7 @@ const Projects = () => {
               <ChevronLeft size={32} />
             </button>
 
+            {/* Tombol Kanan */}
             <button 
               onClick={nextImage}
               className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all z-20"
@@ -196,6 +200,7 @@ const Projects = () => {
               <ChevronRight size={32} />
             </button>
 
+            {/* Gambar */}
             <div className="w-full aspect-video rounded-xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl">
               <img 
                 src={activeGallery[currentIndex]} 
@@ -204,6 +209,7 @@ const Projects = () => {
               />
             </div>
 
+            {/* Indikator Titik */}
             <div className="mt-6 flex gap-2">
               {activeGallery.map((_, i) => (
                 <div 

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 const Preloader = () => {
-  const location = useLocation();
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
 
@@ -11,22 +9,15 @@ const Preloader = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const fullText = "Please Wait...";
 
-  // 1. Logika durasi Preloader
+  // 1. Logika durasi Preloader (Hanya berjalan sekali saat web pertama kali dibuka)
   useEffect(() => {
-    // Reset state saat halaman berubah
-    setIsVisible(true);
-    setIsFading(false);
-    setText("");
-    setIsDeleting(false);
-
-    // Hilangkan preloader setelah 1.5 detik agar tidak terlalu lama menunggu
     const timer = setTimeout(() => {
       setIsFading(true);
       setTimeout(() => setIsVisible(false), 700); // Menunggu transisi fade-out selesai
     }, 1500);
 
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, []);
 
   // 2. Logika animasi ketik (Typing Effect)
   useEffect(() => {
@@ -43,7 +34,7 @@ const Preloader = () => {
       let delta = isDeleting ? 50 : 100;
 
       if (!isDeleting && updatedText === fullText) {
-        delta = 800; // Pause sebentar ketika teks "Please Wait..." sudah lengkap
+        delta = 800; // Pause sebentar ketika teks sudah lengkap
         setIsDeleting(true);
       } else if (isDeleting && updatedText === "") {
         setIsDeleting(false);
@@ -72,7 +63,7 @@ const Preloader = () => {
       {/* TYPING TEXT SECTION */}
       <h2 className="text-2xl md:text-4xl font-mono font-semibold flex items-center justify-center gap-1.5">
         <span className="text-blue-400">{text}</span>
-        {/* Kursor kotak berkedip yang sama seperti di Hero */}
+        {/* Kursor kotak berkedip */}
         <span className="w-1.5 md:w-2 h-7 md:h-9 bg-blue-500 animate-pulse" />
       </h2>
     </div>
